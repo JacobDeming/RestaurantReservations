@@ -2,6 +2,7 @@
 var express=require('express');
 var bodyParser=require('body-parser');
 var fs=require('fs');
+var path=require('path');
 //DATA REQUIRES//
 var tablesData=require("./JSON/tables.js");
 var waitlistData=require("./JSON/waitlist.js");
@@ -9,8 +10,6 @@ var adminData=require("./JSON/admin.js");
 //INITIALIZE VARIABLES//
 var app=express();
 var PORT=3000;
-
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
