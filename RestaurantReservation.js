@@ -49,19 +49,22 @@ app.get('/api/admin',function(req,res){
 	res.json(adminData);})
 
 app.post('/api/tables',function(req,res){
-
-})
-
-app.post('/api/waitlist',function(req,res){
-	
-})
+	waitlistData=JSON.stringify(waitlistData);
+	waitlistData=JSON.parse(waitlistData);
+	waitlistData=JSON.stringify(waitlistData);
+	waitlistData=JSON.parse(waitlistData);
+	if(tablesData.length<3){
+		tablesData.push(req.body);
+		fs.writeFile('./JSON/tables.js',"module.exports="+JSON.stringify(tablesData),(err)=>{
+  			if (err) throw err;})}
+	else{waitlistData.push(req.body);}
+		fs.writeFile('./JSON/waitlist.js',"module.exports="+JSON.stringify(waitlistData),(err)=>{
+  			if (err) throw err;})
+	res.end();})
 
 app.post('/api/admin',function(req,res){
 	
 })
-
-fs.writeFile('./JSON/tables.js',"module.exports="+JSON.stringify(tablesData),(err)=>{
-  if (err) throw err;});
 
 // Listener
 app.listen(PORT, function() {
